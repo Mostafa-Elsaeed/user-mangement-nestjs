@@ -6,6 +6,10 @@ import config from "./configs/env/env.configs";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { envValidationSchema } from "./configs/env/validation.schema";
+import { AuthModule } from "./auth/auth.module";
+import { UsersModule } from "./users/users.module";
+import { TypeOrmModule } from "@nestjs/typeorm";
+import { AppDataSource } from "./database/database.config";
 
 @Module({
   imports: [
@@ -20,6 +24,11 @@ import { envValidationSchema } from "./configs/env/validation.schema";
         abortEarly: true, // Stops validation on first error
       },
     }),
+    TypeOrmModule.forRoot({
+      ...AppDataSource.options,
+    }),
+    AuthModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

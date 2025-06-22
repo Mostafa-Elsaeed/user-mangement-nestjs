@@ -7,5 +7,6 @@ export const databaseConfig = () => ({
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE_NAME,
     databaseConnection: process.env.DATABASE_CONNECTION,
+    databaseSchema: process.env.DATABASE_SCHEMA,
   },
 });

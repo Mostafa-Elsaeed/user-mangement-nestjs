@@ -3,6 +3,7 @@ import { Logger } from "@nestjs/common";
 
 // Local Imports
 import { AppModule } from "./app.module";
+import { catchErrors } from "./global-helpers/catch-errors";
 
 async function startApp() {
   const app = await NestFactory.create(AppModule);
@@ -12,7 +13,7 @@ async function startApp() {
 }
 
 async function bootstrap() {
-  const [app, error] = await catchErrors(startApp);
+  const [app, error] = await catchErrors(() => startApp());
 
   if (error) {
     Logger.error("Error starting application:", error);

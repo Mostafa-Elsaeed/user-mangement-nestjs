@@ -1,4 +1,4 @@
-async function catchErrors<T>(
+export async function catchErrors<T>(
   operation: () => Promise<T>
 ): Promise<[T | null, Error | null]> {
   try {

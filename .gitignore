@@ -17,3 +17,8 @@ yarn-debug.log*
 yarn-error.log*
 # Environment files
 .env
+
+.env*
+.flaskenv*
+!.env.project
+!.env.vault
